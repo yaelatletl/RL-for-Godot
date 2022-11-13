@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/scenes/DeadEnd2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/height_difference2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scenes/height_difference.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scenes/DeadEnd.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/Scenario.gd" type="Script" id=6]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 6 )
+player_path = NodePath("Player")
+scenarios = [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ]
+
+[node name="Structure" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.02779, -3.24005 )
+
+[node name="Actors" type="Spatial" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
