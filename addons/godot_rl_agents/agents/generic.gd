@@ -27,6 +27,9 @@ func get_done() -> bool:
 func set_done_false() -> void:
 	done = false
 
+func set_done_true() -> void:
+	done = true
+
 func set_heuristic(heuristic) -> void:
 	self._heuristic = heuristic
 
@@ -35,10 +38,10 @@ func update_reward() -> void:
 	reward += shaping_reward()
 
 func apply_penalty(penalty) -> void:
-	reward -= abs(penalty)
+	reward -= abs(penalty) #Use abs to avoid programmer confusion
 
 func apply_reward(reward) -> void:
-	reward += abs(reward)
+	reward += abs(reward) #Use abs to avoid programmer confusion
 
 func shaping_reward() -> float: #Virtual Method, must be replaced 
 	return 0.0
