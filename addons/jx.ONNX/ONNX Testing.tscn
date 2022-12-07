@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/jx.ONNX/models/resnet50/inference.cs" type="Script" id=1]
+[ext_resource path="res://dog.jpeg" type="Texture" id=2]
+
+[node name="ONNX Testing" type="Node"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 1 )
+modelFilePath = "E:\\Github\\RL-for-Godot/addons/jx.ONNX/models/resnet50-v2-7.onnx"
+godotImage = ExtResource( 2 )
