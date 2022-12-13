@@ -66,8 +66,11 @@ public class inference : Node
         }});
         var inputs = new List<NamedOnnxValue>{    
         NamedOnnxValue.CreateFromTensor<float>("data", input)};
-
-        var session = new InferenceSession(modelFilePath); //May need to make a wrapper class for this
+        Godot.File file = new Godot.File();
+        file.Open(modelFilePath, Godot.File.ModeFlags.Read);
+        byte[] model = file.GetBuffer((int)file.GetLen());
+        file.Close();
+        var session = new InferenceSession(model); //May need to make a wrapper class for this
         IDisposableReadOnlyCollection<DisposableNamedOnnxValue> results = session.Run(inputs);
         IEnumerable<float> output = results.First().AsEnumerable<float>();
         float sum = output.Sum(x => (float)Math.Exp(x));
